@@ -1,0 +1,74 @@
+---
+
+---
+
+<section class="cta">
+  <div class="cta-content">
+    <h4 class="heading">Boost your links today</h4>
+    <button class="btn">Get Started</button>
+  </div>
+</section>
+
+<style>
+.cta {
+    background-image: url('/src/assets/bg-boost-mobile.svg');
+    background-color: var(--clr-dark-violet);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 90px 35px;
+}
+
+@media screen and (min-width: 48rem){
+    .cta{
+      padding: 57px;
+      background-image: url('/src/assets/bg-boost-desktop.svg');
+    }
+  }
+
+  .cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 48rem){
+    .cta-content{
+      gap: 2rem;
+    }
+  }
+
+  .heading {
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 171%;
+    letter-spacing: -0.7px;
+    color: var(--clr-white);
+}
+
+@media screen and (min-width: 48rem){
+    .heading {
+    line-height:  120%;
+    letter-spacing: -1px;
+    }
+}
+
+.btn {
+  background-color: var(--clr-cyan);
+  color: var(--clr-white);
+  font-weight: 700;
+  font-size: 20px;
+  padding: 13px 40px;
+  border: none;
+  border-radius: 1.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+&:hover{
+   background-color: #9ae3e3;
+  }
+}
+
+</style>

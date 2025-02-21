@@ -1,7 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import LinkSection from "../components/LinkSection.astro";
+import Statistics from '../components/Statistics.astro';
+import Cta from '../components/Cta.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-	Hello, Astro!
+	<Header />
+	<main>
+		<Hero />
+		<div class="center-section">
+			<LinkSection />
+			<Statistics />
+		</div>
+		<Cta />
+	</main>
+	<Footer />
 </Layout>
+
+<style>
+	.center-section {
+		padding-inline: 1.5rem;
+		background-color: #f2f2f2;
+		display: flex;
+		flex-direction: column;
+		gap: 80px;
+	}
+
+	@media screen and (min-width: 48rem){
+    .center-section{
+      gap: 120px;
+    }
+  }
+
+</style>
