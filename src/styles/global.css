@@ -1,6 +1,7 @@
 /* Variables */
 :root {
   --clr-cyan: hsl(180, 66%, 49%);
+  --clr-light-cyan: hsl(180, 56%, 75%);
   --clr-dark-violet: hsl(257, 27%, 26%);
   --clr-red: hsl(0, 87%, 67%);
   --clr-gray: hsl(0, 0%, 75%);
@@ -8,6 +9,7 @@
   --clr-very-dark-blue: hsl(255, 11%, 22%);
   --clr-very-dark-violet: hsl(260, 8%, 14%);
   --clr-white: hsl(0, 0%, 100%);
+  --clr-bg: hsl(25, 33%, 95%);
 }
 
 /* RESET */

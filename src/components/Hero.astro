@@ -1,117 +1,125 @@
 ---
-import heroImg from '../assets/illustration-working.svg';
+import heroImg from "../assets/illustration-working.svg";
 ---
 
 <section class="hero">
   <div class="wrapper">
     <div class="hero-content">
       <h1 class="main-heading">More than just shorter links</h1>
-      <p class="main-paragraph">Build your brand’s recognition and get detailed insights on how your links are performing.</p>
+      <p class="main-paragraph">
+        Build your brand’s recognition and get detailed insights on how your
+        links are performing.
+      </p>
       <button class="btn">Get Started</button>
     </div>
-  
-    <div>
-      <img src={heroImg.src} alt="">
+
+    <div class="hero-img-container">
+      <img src={heroImg.src} alt="Illustration" />
     </div>
   </div>
 </section>
 
-
-
 <style>
-.hero {
-  padding-inline: 1.5rem;
-  margin-block-end: 168px;
-}
-
-
-
-@media screen and (min-width: 48rem) {
   .hero {
-    margin-block-end: 152px;
+    padding-left: 1.5rem;
+    margin-block-end: 10.5rem;
   }
-}
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column-reverse;
-  justify-content: center;
-  gap: 37px;
-  max-width: 69.375rem;
-  margin: 0 auto;
-}
+  @media screen and (min-width: 48rem) {
+    .hero {
+      margin-block-end: 9.5rem;
+    }
+  }
 
-@media screen and (min-width: 48rem){
   .wrapper {
-    flex-direction: row;
-    gap: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 2.3125rem;
+    max-width: 69.375rem;
+    margin: 0 auto;
   }
-}
 
-.hero-content {
-  text-align: center;
-}
+  @media screen and (min-width: 48rem) {
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: none;
+    }
+  }
 
-@media screen and (min-width: 48rem) {
   .hero-content {
-    text-align: left;
+    text-align: center;
+    padding-right: 1.5rem;
   }
-}
 
-.main-heading {
-  font-weight: 700;
-  font-size: clamp(2.625rem, 6vw, 5rem);
-  line-height:  114%;
-  letter-spacing: -1.05px;
-  color: var(--clr-very-dark-blue);
-}
+  @media screen and (min-width: 48rem) {
+    .hero-content {
+      text-align: left;
+      width: fit-content;
+      justify-self: end;
+      max-width: 35.25rem;
+      padding-right: 0;
+    }
+  }
 
-@media screen and (min-width: 48rem) {
   .main-heading {
-    letter-spacing: -2px;
-}
-}
+    font-weight: 700;
+    font-size: clamp(2.625rem, 6vw, 5rem);
+    line-height: 114%;
+    letter-spacing: -1.05px;
+    color: var(--clr-very-dark-blue);
+  }
 
-.main-paragraph {
-  font-weight: 500;
-  font-size: 18px;
-  line-height:  167%;
-  letter-spacing: 0.122727px;
-  color: var(--clr-grayish-violet);
-  margin-top: 15px;
-}
+  @media screen and (min-width: 48rem) {
+    .main-heading {
+      letter-spacing: -2px;
+    }
+  }
 
-@media screen and (min-width: 48rem) {
   .main-paragraph {
-    font-size: 22px;
-    letter-spacing: 0.15px;
-    margin-top: 5px;
-}
-}
-
-.btn {
-  background-color: var(--clr-cyan);
-  color: var(--clr-white);
-  font-weight: 700;
-  font-size: 20px;
-  padding: 13px 40px;
-  border: none;
-  border-radius: 1.75rem;
-  cursor: pointer;
-  margin-top: 2rem;
-  transition: background-color 0.3s;
-
-&:hover{
-   background-color: #9ae3e3;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 167%;
+    letter-spacing: 0.122727px;
+    color: var(--clr-grayish-violet);
+    margin-top: 0.9375rem;
   }
-}
 
-@media screen and (min-width: 48rem) {
+  @media screen and (min-width: 48rem) {
+    .main-paragraph {
+      font-size: 1.375rem;
+      letter-spacing: 0.15px;
+      margin-top: 0.3125rem;
+    }
+  }
+
   .btn {
-    margin-top: 2.375rem;
+    background-color: var(--clr-cyan);
+    color: var(--clr-white);
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 0.8125rem 2.5rem;
+    border: none;
+    border-radius: 1.75rem;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--clr-light-cyan);
+    }
+
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
+    }
   }
-}
 
-
+  @media screen and (min-width: 48rem) {
+    .btn {
+      margin-top: 2.375rem;
+    }
+  }
 </style>

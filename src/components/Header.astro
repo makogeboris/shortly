@@ -1,314 +1,344 @@
 ---
-import logo from '../assets/logo.svg';
+import logo from "../assets/logo.svg";
 ---
 
-
 <header class="header">
-	<div class="wrapper">
-			<a class="logo" href="/">
-					<img src={logo.src} alt="Shortly" />
-			</a>
-	 
-			<!-- Desktop menu -->
-			<nav class="nav">
-					<ul class="list">
-							<li><a class="link" href="#">Features</a></li>
-							<li><a class="link" href="#">Pricing</a></li>
-							<li><a class="link" href="#">Resources</a></li>
-					</ul>
-	 
-					<div class="btn-container">
-							<button class="btn login-btn">Login</button>
-							<button class="btn signUp-btn">Sign Up</button>
-					</div>
-			</nav>
-	 
-			<!-- Hamburger button -->
-			<div class="ham-btn-container">
-					<button
-						aria-label="Toggle Mobile Menu"
-						aria-expanded="false"
-						aria-controls="content"
-						id="menu-btn"
-						type="button"
-						class="hamburger"
-					>
-						<span class="hamburger-top"></span>
-						<span class="hamburger-middle"></span>
-						<span class="hamburger-bottom"></span>
-					</button>
-				</div>
-	 
-				<!-- Mobile menu -->
-				<div id="content" class="mobile-menu hidden">
-					<ul class="nav-menu-mobile">
-						<li>
-							<a class="link links-mobile" href="#">Features</a>
-						</li>
-						<li>
-							<a class="link links-mobile" href="#">Pricing</a>
-						</li>
-						<li>
-							<a class="link links-mobile" href="#">Resources</a>
-						</li>
-					</ul>
-	 
-					<div class="btn-container mobile-btn-container">
-							<button class="btn login-btn mobile-login-btn">Login</button>
-							<button class="btn signUp-btn mobile-signUp-btn">Sign Up</button>
-					</div>
-				</div>
-		 </div>
+  <div class="wrapper">
+    <a class="logo" href="/">
+      <img src={logo.src} alt="Shortly" />
+    </a>
+
+    <!-- Desktop menu -->
+    <nav class="nav">
+      <ul class="list">
+        <li><a class="link" href="#">Features</a></li>
+        <li><a class="link" href="#">Pricing</a></li>
+        <li><a class="link" href="#">Resources</a></li>
+      </ul>
+
+      <div class="btn-container">
+        <button class="btn login-btn">Login</button>
+        <button class="btn signUp-btn">Sign Up</button>
+      </div>
+    </nav>
+
+    <!-- Hamburger button -->
+    <div class="ham-btn-container">
+      <button
+        aria-label="Toggle Mobile Menu"
+        aria-expanded="false"
+        aria-controls="content"
+        id="menu-btn"
+        type="button"
+        class="hamburger"
+      >
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="content" class="mobile-menu hidden">
+      <ul class="nav-menu-mobile">
+        <li>
+          <a class="link links-mobile" href="#">Features</a>
+        </li>
+        <li>
+          <a class="link links-mobile" href="#">Pricing</a>
+        </li>
+        <li>
+          <a class="link links-mobile" href="#">Resources</a>
+        </li>
+      </ul>
+
+      <div class="btn-container mobile-btn-container">
+        <button class="btn login-btn mobile-login-btn">Login</button>
+        <button class="btn signUp-btn mobile-signUp-btn">Sign Up</button>
+      </div>
+    </div>
+  </div>
 </header>
- 
 
 <style>
-.header {
-  padding-inline: 1.5rem;
-  padding-block: 2.5rem 1.5rem;
-}
-
-@media screen and (min-width: 48rem) {
   .header {
-    padding-block: 3rem 4.875rem;
+    padding-inline: 1.5rem;
+    padding-block: 2.5rem 1.5rem;
   }
-}
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.8125rem;
-  max-width: 69.375rem;
-  margin: 0 auto;
-  position: relative;
-}
+  @media screen and (min-width: 48rem) {
+    .header {
+      padding-block: 3rem 4.875rem;
+    }
+  }
 
-.logo {
-  flex-shrink: 0;
-}
-
-.nav {
-  display: none;
-}
-
-@media screen and (min-width: 48rem) {
-  .nav {
+  .wrapper {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
+    gap: 2.8125rem;
+    max-width: 69.375rem;
+    margin: 0 auto;
+    position: relative;
   }
-}
 
-.list {
-  display: flex;
-  gap: 1.875rem;
-  list-style: none;
-  padding-left: 0;
-}
+  .logo {
+    flex-shrink: 0;
 
-.link {
-  font-weight: 700;
-  font-size: 0.9375rem;
-  color: var(--clr-grayish-violet);
-  transition: color 0.3s;
-  text-decoration: none;
-}
-
-.link:hover,
-.login-btn:hover {
-  color: var(--clr-very-dark-blue);
-}
-
-.btn-container {
-  display: flex;
-  gap: 2.3125rem;
-}
-
-.btn {
-  border: transparent;
-  font-weight: 700;
-  font-size: 0.9375rem;
-  cursor: pointer;
-}
-
-.login-btn {
-  color: var(--clr-grayish-violet);
-  background: transparent;
-  transition: color 0.3s;
-}
-
-.signUp-btn {
-  background: var(--clr-cyan);
-  border-radius: 1.75rem;
-  padding: 0.5rem 1.5rem;
-  color: var(--clr-white);
-  transition: background-color 0.3s;
-
-  &:hover{
-     background-color: #9ae3e3;
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
     }
-}
+  }
 
-@media screen and (min-width: 48rem) {
-  .ham-btn-container {
+  .nav {
     display: none;
   }
-}
 
-/* Hamburger Menu */
+  @media screen and (min-width: 48rem) {
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
 
-.hamburger {
-  cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
-  transition: all 0.25s;
-  position: relative;
-  z-index: 40;
-  display: block;
-  border-style: none;
-  background-color: transparent;
-}
+  .list {
+    display: flex;
+    gap: 1.875rem;
+    list-style: none;
+    padding-left: 0;
+  }
 
-.hamburger:focus {
-  outline: none;
-}
+  .link {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--clr-grayish-violet);
+    text-decoration: none;
+    transition: color 0.3s;
 
-.hamburger-top,
-.hamburger-middle,
-.hamburger-bottom {
-  position: absolute;
-  width: 1.5rem;
-  height: 2px;
-  top: 0;
-  left: 0;
-  background: var(--clr-grayish-violet);
-  transform: rotate(0);
-  transition: all 0.5s;
-}
+    &:hover {
+      color: var(--clr-very-dark-blue);
+    }
 
-.hamburger-middle {
-  transform: translateY(7px);
-}
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
+    }
+  }
 
-.hamburger-bottom {
-  transform: translateY(14px);
-}
+  .btn-container {
+    display: flex;
+    gap: 2.3125rem;
+  }
 
-.open {
-  transform: rotate(90deg);
-}
+  .btn {
+    border: transparent;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    cursor: pointer;
+  }
 
-.open .hamburger-top {
-  transform: rotate(45deg) translateY(6px) translateX(6px);
-}
+  .login-btn {
+    color: var(--clr-grayish-violet);
+    background: transparent;
+    transition: color 0.3s;
 
-.open .hamburger-middle {
-  display: none;
-}
+    &:hover {
+      color: var(--clr-very-dark-blue);
+    }
 
-.open .hamburger-bottom {
-  transform: rotate(-45deg) translateY(6px) translateX(-6px);
-}
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: -3px;
+    }
+  }
 
-.mobile-menu {
-  position: absolute;
-  background-color: var(--clr-dark-violet);
-  z-index: 1;
-  width: 100%;
-  top: 50px;
-  border-radius: 10px;
-  text-align: center;
-  padding: 2.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.875rem;
-}
+  .signUp-btn {
+    background: var(--clr-cyan);
+    border-radius: 1.75rem;
+    padding: 0.5rem 1.5rem;
+    color: var(--clr-white);
+    transition: background-color 0.3s;
 
-@media screen and (min-width: 48rem) {
+    &:hover {
+      background-color: var(--clr-light-cyan);
+    }
+
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
+    }
+  }
+
+  @media screen and (min-width: 48rem) {
+    .ham-btn-container {
+      display: none;
+    }
+  }
+
+  /* Hamburger Menu */
+
+  .hamburger {
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: all 0.25s;
+    position: relative;
+    z-index: 40;
+    display: block;
+    border-style: none;
+    background-color: transparent;
+
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 2px;
+    }
+  }
+
+  .hamburger-top,
+  .hamburger-middle,
+  .hamburger-bottom {
+    position: absolute;
+    width: 1.5rem;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background: var(--clr-grayish-violet);
+    transform: rotate(0);
+    transition: all 0.5s;
+  }
+
+  .hamburger-middle {
+    transform: translateY(7px);
+  }
+
+  .hamburger-bottom {
+    transform: translateY(14px);
+  }
+
+  .open {
+    transform: rotate(90deg);
+  }
+
+  .open .hamburger-top {
+    transform: rotate(45deg) translateY(6px) translateX(6px);
+  }
+
+  .open .hamburger-middle {
+    display: none;
+  }
+
+  .open .hamburger-bottom {
+    transform: rotate(-45deg) translateY(6px) translateX(-6px);
+  }
+
   .mobile-menu {
-    display: none;
+    position: absolute;
+    background-color: var(--clr-dark-violet);
+    z-index: 1;
+    width: 100%;
+    top: 50px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
   }
-}
 
-.nav-menu-mobile {
-  padding-left: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.875rem;
-}
-
-.links-mobile {
-  color: var(--clr-white);
-  font-size: 1.125rem;
-}
-
-.mobile-btn-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.mobile-btn-container::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: var(--clr-grayish-violet);
-  mix-blend-mode: normal;
-  opacity: 0.25;
-}
-
-.mobile-login-btn {
-  color: var(--clr-white);
-  font-size: 1.125rem;
-}
-
-.mobile-signUp-btn {
-  color: var(--clr-white);
-  font-size: 1.125rem;
-  width: 100%;
-  max-width: 17.5rem;
-  transition: background-color 0.3s;
-
-  &:hover{
-     background-color: #9ae3e3;
+  @media screen and (min-width: 48rem) {
+    .mobile-menu {
+      display: none;
     }
-}
+  }
 
+  .nav-menu-mobile {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+  }
 
-.hidden {
-  display: none;
-}
+  .links-mobile {
+    color: var(--clr-white);
+    font-size: 1.125rem;
 
-@media screen and (min-width: 48rem) {
+    &:hover {
+      color: var(--clr-cyan);
+    }
+  }
+
+  .mobile-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .mobile-btn-container::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--clr-grayish-violet);
+    mix-blend-mode: normal;
+    opacity: 0.25;
+  }
+
+  .mobile-login-btn {
+    color: var(--clr-white);
+    font-size: 1.125rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--clr-cyan);
+    }
+  }
+
+  .mobile-signUp-btn {
+    color: var(--clr-white);
+    font-size: 1.125rem;
+    width: 100%;
+    max-width: 17.5rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--clr-light-cyan);
+    }
+  }
+
   .hidden {
     display: none;
   }
-}
 
+  @media screen and (min-width: 48rem) {
+    .hidden {
+      display: none;
+    }
+  }
 </style>
 
-
 <script>
-    const btn = document.getElementById("menu-btn");
-    const menu = document.querySelector(".mobile-menu");
-  
-    if (btn && menu) {
-      btn.classList.remove("open");
-  
-      btn.addEventListener("click", navToggle);
-  
-      function navToggle() {
-        if (btn && menu) {
-          btn.classList.toggle("open");
-          menu.classList.toggle("hidden");
-          btn.setAttribute("aria-expanded", menu.classList.contains("hidden") ? "false" : "true");
-        }
+  const btn = document.getElementById("menu-btn");
+  const menu = document.querySelector(".mobile-menu");
+
+  if (btn && menu) {
+    btn.classList.remove("open");
+
+    btn.addEventListener("click", navToggle);
+
+    function navToggle() {
+      if (btn && menu) {
+        btn.classList.toggle("open");
+        menu.classList.toggle("hidden");
+        btn.setAttribute(
+          "aria-expanded",
+          menu.classList.contains("hidden") ? "false" : "true",
+        );
       }
     }
-  </script>
-  
+  }
+</script>

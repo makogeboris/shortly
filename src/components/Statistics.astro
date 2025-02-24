@@ -1,61 +1,198 @@
 ---
-
+const featuresData = [
+  {
+    title: "Brand Recognition",
+    description:
+      "Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.",
+    icon: "./src/assets/icon-brand-recognition.svg",
+  },
+  {
+    title: "Detailed Records",
+    description:
+      "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.",
+    icon: "./src/assets/icon-detailed-records.svg",
+  },
+  {
+    title: "Fully Customizable",
+    description:
+      "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.",
+    icon: "./src/assets/icon-fully-customizable.svg",
+  },
+];
 ---
 
 <section class="statistics">
   <div class="stats-content">
     <h2 class="heading">Advanced Statistics</h2>
-    <p class="paragraph">Track how your links are performing across the web with our advanced statistics dashboard.</p>
+    <p class="paragraph">
+      Track how your links are performing across the web with our advanced
+      statistics dashboard.
+    </p>
+  </div>
+
+  <div class="cards-container">
+    {
+      featuresData.map((feature) => (
+        <div class="card">
+          <div class="icon-container">
+            <img src={feature.icon} alt={feature.title} />
+          </div>
+          <h3 class="title">{feature.title}</h3>
+          <p class="description">{feature.description}</p>
+        </div>
+      ))
+    }
   </div>
 </section>
 
-
 <style>
-.statistics {
-    max-width: 1110px;
+  .statistics {
+    max-width: 69.375rem;
     margin: 0 auto;
     width: 100%;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
 
-.stats-content {
+  @media screen and (min-width: 48rem) {
+    .statistics {
+      gap: 3.5rem;
+    }
+  }
+
+  .stats-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
+    gap: 1.125rem;
     text-align: center;
     padding: 0 1.5rem;
-    margin-bottom: 48px;
-}
-
-@media screen and (min-width: 48rem){
-  .stats-content{
-    max-width: 540px;
-    margin: 0 auto;
-    margin-bottom: 56px;
+    margin-bottom: 3rem;
   }
-}
 
-.heading {
+  @media screen and (min-width: 48rem) {
+    .stats-content {
+      max-width: 33.75rem;
+      margin: 0 auto;
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  .heading {
     font-weight: 700;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     line-height: 171%;
     letter-spacing: -0.7px;
     color: var(--clr-dark-violet);
-}
+  }
 
-@media screen and (min-width: 48rem){
+  @media screen and (min-width: 48rem) {
     .heading {
-    line-height:  120%;
-    letter-spacing: -1px;
+      line-height: 120%;
+      letter-spacing: -1px;
     }
-}
+  }
 
-.paragraph {
+  .paragraph {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 178%;
     letter-spacing: 0.122727px;
     color: var(--clr-grayish-violet);
-}
+  }
 
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5.75rem;
+  }
+
+  @media screen and (min-width: 48rem) {
+    .cards-container {
+      flex-direction: row;
+      gap: 1.875rem;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--clr-white);
+    border-radius: 5px;
+    text-align: center;
+    padding-block: 4.8125rem 2.5rem;
+    padding-inline: 2rem;
+    position: relative;
+  }
+
+  @media screen and (min-width: 48rem) {
+    .card {
+      align-items: flex-start;
+      text-align: left;
+      max-width: 21.875rem;
+      max-height: fit-content;
+    }
+  }
+
+  .card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    background: var(--clr-cyan);
+  }
+
+  @media screen and (max-width: 47.99rem) {
+    .card:not(:last-child)::after {
+      width: 8px;
+      height: 92px;
+      left: 50%;
+      bottom: -92px;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (min-width: 48rem) {
+    .card:not(:last-child)::after {
+      height: 8px;
+      width: 30px;
+      right: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .card:nth-child(2) {
+      margin-top: 2.75rem;
+    }
+
+    .card:nth-child(3) {
+      margin-top: 5.5rem;
+    }
+  }
+
+  .icon-container {
+    width: 5.5rem;
+    height: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background: var(--clr-dark-violet);
+    position: absolute;
+    top: -44px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 1.375rem;
+    color: var(--clr-very-dark-blue);
+  }
+
+  .description {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 173%;
+    color: var(--clr-grayish-violet);
+    margin-top: 0.75rem;
+  }
 </style>

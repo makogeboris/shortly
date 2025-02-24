@@ -4,23 +4,23 @@
 
 <section class="link-section">
   <div class="shorten-link">
-    <input type="text" placeholder="Shorten a link here..."/>
+    <input type="text" placeholder="Shorten a link here..." />
     <button class="shorten-btn">Shorten It!</button>
   </div>
 
   <div class="shortend-links">
     <div class="shortend-link">
       <p class="link-long">www.frontendmentor.io</p>
-      
+
       <div class="link-btn-wrap">
         <a class="link-short" href="#">www.fem.io</a>
         <button class="copy-btn">Copy</button>
       </div>
     </div>
-  
+
     <div class="shortend-link">
       <p class="link-long">www.frontendmentor.io</p>
-      
+
       <div class="link-btn-wrap">
         <a class="link-short" href="#">www.fem.io</a>
         <button class="copy-btn">Copy</button>
@@ -30,20 +30,18 @@
 </section>
 
 <style>
-
-  .link-section{
-    max-width: 1110px;
+  .link-section {
+    max-width: 69.375rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    margin-bottom: 80px;
     width: 100%;
+    margin-top: -85px;
   }
 
-
-  .shorten-link{
-    background-image: url('/src/assets/bg-shorten-mobile.svg');
+  .shorten-link {
+    background-image: url("/src/assets/bg-shorten-mobile.svg");
     background-color: var(--clr-dark-violet);
     background-repeat: no-repeat;
     background-position: top right;
@@ -52,82 +50,91 @@
     align-items: center;
     flex-direction: column;
     gap: 1rem;
-    padding: 24px;
+    padding: 1.5rem;
   }
 
-  @media screen and (min-width: 48rem){
-    .shorten-link{
-      background-image: url('/src/assets/bg-shorten-desktop.svg');
+  @media screen and (min-width: 48rem) {
+    .shorten-link {
+      background-image: url("/src/assets/bg-shorten-desktop.svg");
       flex-direction: row;
       justify-content: space-between;
-      padding: 52px 65px;
+      padding: 3.25rem 4.0625rem;
       gap: 1.5rem;
     }
   }
 
-  .shorten-link input{
+  .shorten-link input {
     border-radius: 5px;
-    padding: 14px 32px;
+    padding: 0.875rem 2rem;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 180%;
     letter-spacing: 0.15px;
-    color: #34313D;
+    color: var(--clr-very-dark-blue);
     width: 100%;
-    max-width: 769px;
+    max-width: 48.0625rem;
     border: transparent;
 
-    &::placeholder{
-    mix-blend-mode: normal;
-    opacity: 0.5;
+    &::placeholder {
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
+
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
     }
   }
 
-  @media screen and (min-width: 48rem){
-    .shorten-link input{
+  @media screen and (min-width: 48rem) {
+    .shorten-link input {
       border-radius: 10px;
     }
   }
 
-
-  .shorten-btn{
+  .shorten-btn {
     background-color: var(--clr-cyan);
     color: var(--clr-white);
     border-radius: 5px;
-    padding: 14px;
-    font-size: 20px;
+    padding: 0.875rem;
+    font-size: 1.25rem;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%;
     border: transparent;
 
-    &:hover{
-     background-color: #9ae3e3;
+    &:hover {
+      background-color: var(--clr-light-cyan);
+    }
+
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
     }
   }
 
-  @media screen and (min-width: 48rem){
-    .shorten-btn{
+  @media screen and (min-width: 48rem) {
+    .shorten-btn {
       border-radius: 10px;
-      width: 188px;
+      width: 11.75rem;
       line-height: 180%;
     }
   }
 
-  .shortend-links{
+  .shortend-links {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  @media screen and (min-width: 48rem){
-    .shortend-links{
+  @media screen and (min-width: 48rem) {
+    .shortend-links {
       gap: 1rem;
     }
   }
 
-  .shortend-link{
+  .shortend-link {
     display: flex;
     flex-direction: column;
     background: var(--clr-white);
@@ -135,43 +142,50 @@
     padding: 1rem;
   }
 
-  @media screen and (min-width: 48rem){
-    .shortend-link{
-     flex-direction: row;
-     align-items: center;
-     justify-content: space-between;
-     padding: 18px 32px;
+  @media screen and (min-width: 48rem) {
+    .shortend-link {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.125rem 2rem;
     }
   }
 
-  .link-long, .link-short{
+  .link-long,
+  .link-short {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 225%;
     letter-spacing: 0.14px;
   }
 
-  .link-long{
-    color: #34313D;
+  .link-long {
+    color: var(--clr-very-dark-blue);
   }
 
-  @media screen and (min-width: 48rem){
-    .link-long, .link-short{
-    font-size: 20px;
-    line-height: 180%;
+  @media screen and (min-width: 48rem) {
+    .link-long,
+    .link-short {
+      font-size: 1.25rem;
+      line-height: 180%;
     }
   }
 
-  .link-short{
-    color: var(--clr-cyan); 
+  .link-short {
+    color: var(--clr-cyan);
     text-decoration: none;
+
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
+    }
   }
 
-  .copy-btn{
+  .copy-btn {
     background-color: var(--clr-cyan);
     color: var(--clr-white);
     border-radius: 5px;
-    padding: 9px;
+    padding: 0.5625rem;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -179,45 +193,48 @@
     width: 100%;
     border: transparent;
 
-    &:hover{
-     background-color: #9ae3e3;
+    &:hover {
+      background-color: var(--clr-light-cyan);
+    }
+
+    &:focus {
+      outline: 3px solid var(--clr-cyan);
+      outline-offset: 3px;
     }
   }
 
-  
-
-  @media screen and (min-width: 48rem){
-    .copy-btn{
-      width: 103px;
+  @media screen and (min-width: 48rem) {
+    .copy-btn {
+      width: 6.4375rem;
     }
   }
 
-  .link-btn-wrap{
+  .link-btn-wrap {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
   }
 
-  .link-btn-wrap::before{
-    content: '';
+  .link-btn-wrap::before {
+    content: "";
     width: 100%;
     height: 1px;
-    background: #9E9AA8;
+    background: var(--clr-grayish-violet);
     mix-blend-mode: normal;
     opacity: 0.25;
-    margin-top: 6px;
+    margin-top: 0.375rem;
   }
 
-  @media screen and (min-width: 48rem){
-    .link-btn-wrap::before{
+  @media screen and (min-width: 48rem) {
+    .link-btn-wrap::before {
       display: none;
     }
   }
 
-  @media screen and (min-width: 48rem){
-  .link-btn-wrap{
-    flex-direction: row;
-    gap: 1.5rem;
-  }
+  @media screen and (min-width: 48rem) {
+    .link-btn-wrap {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
   }
 </style>
