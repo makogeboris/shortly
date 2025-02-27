@@ -1,32 +1,16 @@
----
-
----
-
 <section class="link-section">
-  <div class="shorten-link">
-    <input type="text" placeholder="Shorten a link here..." />
-    <button class="shorten-btn">Shorten It!</button>
-  </div>
-
-  <div class="shortend-links">
-    <div class="shortend-link">
-      <p class="link-long">www.frontendmentor.io</p>
-
-      <div class="link-btn-wrap">
-        <a class="link-short" href="#">www.fem.io</a>
-        <button class="copy-btn">Copy</button>
-      </div>
+  <form class="shorten-form" id="shorten-form">
+    <div class="input-wrap">
+      <label for="url-input" class="sr-only">Shorten a link here...</label>
+      <input type="text" id="url-input" placeholder="Shorten a link here..." />
+      <p class="error-text" id="error-text" aria-live="polite">
+        Please add a link
+      </p>
     </div>
+    <button type="submit" class="shorten-btn">Shorten It!</button>
+  </form>
 
-    <div class="shortend-link">
-      <p class="link-long">www.frontendmentor.io</p>
-
-      <div class="link-btn-wrap">
-        <a class="link-short" href="#">www.fem.io</a>
-        <button class="copy-btn">Copy</button>
-      </div>
-    </div>
-  </div>
+  <div class="shortened-links" id="shortened-links"></div>
 </section>
 
 <style>
@@ -40,11 +24,12 @@
     margin-top: -85px;
   }
 
-  .shorten-link {
+  .shorten-form {
     background-image: url("/src/assets/bg-shorten-mobile.svg");
     background-color: var(--clr-dark-violet);
     background-repeat: no-repeat;
     background-position: top right;
+    background-size: cover;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -54,18 +39,19 @@
   }
 
   @media screen and (min-width: 48rem) {
-    .shorten-link {
+    .shorten-form {
       background-image: url("/src/assets/bg-shorten-desktop.svg");
       flex-direction: row;
+      align-items: baseline;
       justify-content: space-between;
       padding: 3.25rem 4.0625rem;
       gap: 1.5rem;
     }
   }
 
-  .shorten-link input {
+  .shorten-form input {
     border-radius: 5px;
-    padding: 0.875rem 2rem;
+    padding: 0.2em 2em;
     font-weight: 500;
     font-size: 1.25rem;
     line-height: 180%;
@@ -73,22 +59,56 @@
     color: var(--clr-very-dark-blue);
     width: 100%;
     max-width: 48.0625rem;
-    border: transparent;
+    border: 3px solid transparent;
 
-    &::placeholder {
-      mix-blend-mode: normal;
-      opacity: 0.5;
-    }
-
-    &:focus {
+    &:focus-visible {
       outline: 3px solid var(--clr-cyan);
       outline-offset: 3px;
     }
   }
 
+  .shorten-form input::placeholder {
+    mix-blend-mode: normal;
+    opacity: 0.5;
+  }
+
+  .error-placeholder::placeholder {
+    color: var(--clr-red);
+    opacity: 1;
+  }
+
   @media screen and (min-width: 48rem) {
-    .shorten-link input {
+    .shorten-form input {
+      padding: 0.6em 2em;
       border-radius: 10px;
+    }
+  }
+
+  .input-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 48rem) {
+    .input-wrap {
+      padding-bottom: 0;
+    }
+  }
+
+  .error-text {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.109091px;
+    color: var(--clr-red);
+    margin-top: 4px;
+    position: absolute;
+    display: none;
+  }
+
+  @media screen and (min-width: 48rem) {
+    .error-text {
+      margin-top: 8px;
     }
   }
 
@@ -96,7 +116,7 @@
     background-color: var(--clr-cyan);
     color: var(--clr-white);
     border-radius: 5px;
-    padding: 0.875rem;
+    padding: 0.5em;
     font-size: 1.25rem;
     font-weight: 700;
     cursor: pointer;
@@ -108,7 +128,7 @@
       background-color: var(--clr-light-cyan);
     }
 
-    &:focus {
+    &:focus-visible {
       outline: 3px solid var(--clr-cyan);
       outline-offset: 3px;
     }
@@ -116,25 +136,25 @@
 
   @media screen and (min-width: 48rem) {
     .shorten-btn {
+      padding: 0.9em;
       border-radius: 10px;
       width: 11.75rem;
-      line-height: 180%;
     }
   }
 
-  .shortend-links {
+  .shortened-links {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 
   @media screen and (min-width: 48rem) {
-    .shortend-links {
+    .shortened-links {
       gap: 1rem;
     }
   }
 
-  .shortend-link {
+  :global(.shortened-link) {
     display: flex;
     flex-direction: column;
     background: var(--clr-white);
@@ -143,45 +163,46 @@
   }
 
   @media screen and (min-width: 48rem) {
-    .shortend-link {
+    :global(.shortened-link) {
       flex-direction: row;
       align-items: center;
+      flex-wrap: wrap;
       justify-content: space-between;
       padding: 1.125rem 2rem;
     }
   }
 
-  .link-long,
-  .link-short {
+  :global(.link-long),
+  :global(.link-short) {
     font-weight: 500;
     font-size: 1rem;
     line-height: 225%;
     letter-spacing: 0.14px;
   }
 
-  .link-long {
+  :global(.link-long) {
     color: var(--clr-very-dark-blue);
   }
 
   @media screen and (min-width: 48rem) {
-    .link-long,
-    .link-short {
+    :global(.link-long),
+    :global(.link-short) {
       font-size: 1.25rem;
       line-height: 180%;
     }
   }
 
-  .link-short {
+  :global(.link-short) {
     color: var(--clr-cyan);
     text-decoration: none;
 
-    &:focus {
+    &:focus-visible {
       outline: 3px solid var(--clr-cyan);
       outline-offset: 3px;
     }
   }
 
-  .copy-btn {
+  :global(.copy-btn) {
     background-color: var(--clr-cyan);
     color: var(--clr-white);
     border-radius: 5px;
@@ -197,25 +218,25 @@
       background-color: var(--clr-light-cyan);
     }
 
-    &:focus {
+    &:focus-visible {
       outline: 3px solid var(--clr-cyan);
       outline-offset: 3px;
     }
   }
 
   @media screen and (min-width: 48rem) {
-    .copy-btn {
+    :global(.copy-btn) {
       width: 6.4375rem;
     }
   }
 
-  .link-btn-wrap {
+  :global(.link-btn-wrap) {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .link-btn-wrap::before {
+  :global(.link-btn-wrap)::before {
     content: "";
     width: 100%;
     height: 1px;
@@ -226,15 +247,108 @@
   }
 
   @media screen and (min-width: 48rem) {
-    .link-btn-wrap::before {
+    :global(.link-btn-wrap)::before {
       display: none;
     }
   }
 
   @media screen and (min-width: 48rem) {
-    .link-btn-wrap {
+    :global(.link-btn-wrap) {
       flex-direction: row;
       gap: 1.5rem;
     }
   }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 </style>
+
+<script is:inline>
+  const form = document.getElementById("shorten-form");
+  const input = document.getElementById("url-input");
+  const linksContainer = document.getElementById("shortened-links");
+
+  form?.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const url = input?.value.trim() || "";
+
+    if (!url) {
+      const errorText = document.getElementById("error-text");
+      if (errorText) {
+        errorText.style.display = "block";
+      }
+      const inputWrap = document.querySelector(".input-wrap");
+      if (inputWrap) {
+        inputWrap.style.paddingBottom = "14px";
+      }
+      if (input) {
+        input.style.border = "3px solid var(--clr-red)";
+        input.classList.add("error-placeholder");
+      }
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/shorten", {
+        method: "POST",
+        body: new URLSearchParams({ url }),
+      });
+
+      const data = await res.json();
+
+      if (data.result_url) {
+        const shortLinkEl = document.createElement("div");
+        shortLinkEl.classList.add("shortened-link");
+        shortLinkEl.innerHTML = `
+            <p class="link-long">${url}</p>
+            <div class="link-btn-wrap">
+              <a class="link-short" href="${data.result_url}" target="_blank">${data.result_url}</a>
+              <button class="copy-btn">Copy</button>
+            </div>
+          `;
+
+        linksContainer?.appendChild(shortLinkEl);
+
+        const copyBtn = shortLinkEl.querySelector(".copy-btn");
+        copyBtn?.addEventListener("click", function () {
+          navigator.clipboard.writeText(data.result_url).then(() => {
+            copyBtn.textContent = "Copied!";
+            copyBtn.style.backgroundColor = "var(--clr-dark-violet)";
+            setTimeout(() => {
+              copyBtn.textContent = "Copy";
+              copyBtn.style.backgroundColor = "var(--clr-cyan)";
+            }, 2000);
+          });
+        });
+
+        if (input) input.value = "";
+      }
+    } catch (error) {
+      console.error("Failed to shorten URL:", error);
+    }
+  });
+
+  input?.addEventListener("focus", function () {
+    const errorText = document.getElementById("error-text");
+    if (errorText) {
+      errorText.style.display = "none";
+    }
+    const inputWrap = document.querySelector(".input-wrap");
+    if (inputWrap) {
+      inputWrap.style.paddingBottom = "0";
+    }
+    if (input) {
+      input.style.border = "3px solid transparent";
+      input.classList.remove("error-placeholder");
+    }
+  });
+</script>
