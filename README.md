@@ -8,7 +8,6 @@
   - [Links](#links)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
 - [Author](#author)
 
 ## Overview
@@ -30,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- [Live Site]()
+- [Live Site](https://shortly-psi-pied.vercel.app/)
 
 ### Built with
 
@@ -38,7 +37,7 @@ Users should be able to:
 
 ### What I learned
 
-### Continued development
+This was my first time building with Astro, and I learned how to create a fast and optimized web page. There’s still a lot to explore, but this project gave me a great introduction to Astro’s features. Also, I had the opportunity to further practice integrating APIs into web applications.
 
 ## Author
 

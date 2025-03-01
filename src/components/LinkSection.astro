@@ -3,9 +3,7 @@
     <div class="input-wrap">
       <label for="url-input" class="sr-only">Shorten a link here...</label>
       <input type="text" id="url-input" placeholder="Shorten a link here..." />
-      <p class="error-text" id="error-text" aria-live="polite">
-        Please add a link
-      </p>
+      <p class="error-text" id="error-text" aria-live="polite"></p>
     </div>
     <button type="submit" class="shorten-btn">Shorten It!</button>
   </form>
@@ -276,6 +274,8 @@
   const form = document.getElementById("shorten-form");
   const input = document.getElementById("url-input");
   const linksContainer = document.getElementById("shortened-links");
+  const errorText = document.getElementById("error-text");
+  const inputWrap = document.querySelector(".input-wrap");
 
   function saveLinks(links) {
     sessionStorage.setItem("shortenedLinks", JSON.stringify(links));
@@ -320,21 +320,47 @@
     });
   }
 
+  function showError(message) {
+    if (errorText) {
+      errorText.textContent = message;
+      errorText.style.display = "block";
+    }
+    if (inputWrap) inputWrap.style.paddingBottom = "14px";
+    if (input) {
+      input.style.border = "3px solid var(--clr-red)";
+      input.classList.add("error-placeholder");
+    }
+  }
+
+  function clearError() {
+    if (errorText) errorText.style.display = "none";
+    if (inputWrap) inputWrap.style.paddingBottom = "0";
+    if (input) {
+      input.style.border = "3px solid transparent";
+      input.classList.remove("error-placeholder");
+    }
+  }
+
+  function isValidUrl(url) {
+    try {
+      new URL(url);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   form?.addEventListener("submit", async function (event) {
     event.preventDefault();
     const url = input?.value.trim() || "";
 
     if (!url) {
-      const errorText = document.getElementById("error-text");
-      if (errorText) errorText.style.display = "block";
+      showError("Please enter a URL.");
+      return;
+    }
 
-      const inputWrap = document.querySelector(".input-wrap");
-      if (inputWrap) inputWrap.style.paddingBottom = "14px";
-
-      if (input) {
-        input.style.border = "3px solid var(--clr-red)";
-        input.classList.add("error-placeholder");
-      }
+    if (!isValidUrl(url)) {
+      showError("Please enter a valid URL.");
       return;
     }
 
@@ -354,24 +380,13 @@
         saveLinks(savedLinks);
 
         if (input) input.value = "";
+        clearError();
       }
     } catch (error) {
       console.error("Failed to shorten URL:", error);
     }
   });
 
-  input?.addEventListener("focus", function () {
-    const errorText = document.getElementById("error-text");
-    if (errorText) errorText.style.display = "none";
-
-    const inputWrap = document.querySelector(".input-wrap");
-    if (inputWrap) inputWrap.style.paddingBottom = "0";
-
-    if (input) {
-      input.style.border = "3px solid transparent";
-      input.classList.remove("error-placeholder");
-    }
-  });
-
+  input?.addEventListener("focus", clearError);
   document.addEventListener("DOMContentLoaded", renderLinks);
 </script>
