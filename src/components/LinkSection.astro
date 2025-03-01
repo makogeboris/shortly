@@ -1,4 +1,4 @@
-<section class="link-section">
+<div class="link-section">
   <form class="shorten-form" id="shorten-form">
     <div class="input-wrap">
       <label for="url-input" class="sr-only">Shorten a link here...</label>
@@ -9,7 +9,7 @@
   </form>
 
   <div class="shortened-links" id="shortened-links"></div>
-</section>
+</div>
 
 <style>
   .link-section {
@@ -160,10 +160,9 @@
     padding: 1rem;
   }
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: 964px) {
     :global(.shortened-link) {
       flex-direction: row;
-      align-items: center;
       flex-wrap: wrap;
       justify-content: space-between;
       padding: 1.125rem 2rem;
@@ -176,6 +175,7 @@
     font-size: 1rem;
     line-height: 225%;
     letter-spacing: 0.14px;
+    word-break: break-all;
   }
 
   :global(.link-long) {
@@ -222,7 +222,7 @@
     }
   }
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: 964px) {
     :global(.copy-btn) {
       width: 6.4375rem;
     }
@@ -244,13 +244,14 @@
     margin-top: 0.375rem;
   }
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: 964px) {
     :global(.link-btn-wrap)::before {
       display: none;
+      align-items: center;
     }
   }
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: 964px) {
     :global(.link-btn-wrap) {
       flex-direction: row;
       gap: 1.5rem;
