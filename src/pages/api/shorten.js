@@ -5,8 +5,6 @@ export async function POST({ request }) {
     const formData = await request.formData();
     const url = formData.get("url");
 
-    console.log("Received URL:", url);
-
     if (!url) {
       console.error("No URL provided");
       return new Response(JSON.stringify({ error: "URL is required" }), {

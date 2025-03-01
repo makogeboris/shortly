@@ -15,7 +15,7 @@
 
 <style>
   .link-section {
-    max-width: 69.375rem;
+    max-width: 70.9375rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -277,19 +277,60 @@
   const input = document.getElementById("url-input");
   const linksContainer = document.getElementById("shortened-links");
 
+  function saveLinks(links) {
+    sessionStorage.setItem("shortenedLinks", JSON.stringify(links));
+  }
+
+  function getSavedLinks() {
+    return JSON.parse(sessionStorage.getItem("shortenedLinks")) || [];
+  }
+
+  function renderLinks() {
+    linksContainer.innerHTML = "";
+    const savedLinks = getSavedLinks();
+
+    savedLinks.forEach(({ original, short }) => {
+      addLinkElement(original, short);
+    });
+  }
+
+  function addLinkElement(original, short) {
+    const shortLinkEl = document.createElement("div");
+    shortLinkEl.classList.add("shortened-link");
+    shortLinkEl.innerHTML = `
+      <p class="link-long">${original}</p>
+      <div class="link-btn-wrap">
+        <a class="link-short" href="${short}" target="_blank">${short}</a>
+        <button class="copy-btn">Copy</button>
+      </div>
+    `;
+
+    linksContainer.appendChild(shortLinkEl);
+
+    const copyBtn = shortLinkEl.querySelector(".copy-btn");
+    copyBtn.addEventListener("click", function () {
+      navigator.clipboard.writeText(short).then(() => {
+        copyBtn.textContent = "Copied!";
+        copyBtn.style.backgroundColor = "var(--clr-dark-violet)";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy";
+          copyBtn.style.backgroundColor = "var(--clr-cyan)";
+        }, 2000);
+      });
+    });
+  }
+
   form?.addEventListener("submit", async function (event) {
     event.preventDefault();
     const url = input?.value.trim() || "";
 
     if (!url) {
       const errorText = document.getElementById("error-text");
-      if (errorText) {
-        errorText.style.display = "block";
-      }
+      if (errorText) errorText.style.display = "block";
+
       const inputWrap = document.querySelector(".input-wrap");
-      if (inputWrap) {
-        inputWrap.style.paddingBottom = "14px";
-      }
+      if (inputWrap) inputWrap.style.paddingBottom = "14px";
+
       if (input) {
         input.style.border = "3px solid var(--clr-red)";
         input.classList.add("error-placeholder");
@@ -306,29 +347,11 @@
       const data = await res.json();
 
       if (data.result_url) {
-        const shortLinkEl = document.createElement("div");
-        shortLinkEl.classList.add("shortened-link");
-        shortLinkEl.innerHTML = `
-            <p class="link-long">${url}</p>
-            <div class="link-btn-wrap">
-              <a class="link-short" href="${data.result_url}" target="_blank">${data.result_url}</a>
-              <button class="copy-btn">Copy</button>
-            </div>
-          `;
+        addLinkElement(url, data.result_url);
 
-        linksContainer?.appendChild(shortLinkEl);
-
-        const copyBtn = shortLinkEl.querySelector(".copy-btn");
-        copyBtn?.addEventListener("click", function () {
-          navigator.clipboard.writeText(data.result_url).then(() => {
-            copyBtn.textContent = "Copied!";
-            copyBtn.style.backgroundColor = "var(--clr-dark-violet)";
-            setTimeout(() => {
-              copyBtn.textContent = "Copy";
-              copyBtn.style.backgroundColor = "var(--clr-cyan)";
-            }, 2000);
-          });
-        });
+        const savedLinks = getSavedLinks();
+        savedLinks.push({ original: url, short: data.result_url });
+        saveLinks(savedLinks);
 
         if (input) input.value = "";
       }
@@ -339,16 +362,16 @@
 
   input?.addEventListener("focus", function () {
     const errorText = document.getElementById("error-text");
-    if (errorText) {
-      errorText.style.display = "none";
-    }
+    if (errorText) errorText.style.display = "none";
+
     const inputWrap = document.querySelector(".input-wrap");
-    if (inputWrap) {
-      inputWrap.style.paddingBottom = "0";
-    }
+    if (inputWrap) inputWrap.style.paddingBottom = "0";
+
     if (input) {
       input.style.border = "3px solid transparent";
       input.classList.remove("error-placeholder");
     }
   });
+
+  document.addEventListener("DOMContentLoaded", renderLinks);
 </script>
